@@ -1,0 +1,6 @@
+name: Chamy
+description: 'Chamy is the adaption of Titan from themewagon.'
+author: Beysong
+homepage: 'http://amfearliath.tk'
+code: beysong-chamy
+form: config/fields.yaml
