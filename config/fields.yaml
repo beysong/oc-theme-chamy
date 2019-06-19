@@ -563,4 +563,4 @@ tabs:
       tab: Social
       span: left
       type: partial
-      path: ~/themes/liath-chamy/config/_load_file.htm
+      path: ~/themes/beysong-chamy/config/_load_file.htm
