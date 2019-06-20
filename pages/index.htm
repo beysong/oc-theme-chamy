@@ -2,6 +2,24 @@ title = "index"
 url = "/"
 layout = "main"
 is_hidden = 0
+
+[genericForm contactForm]
+group = "contact"
+rules[fullname] = "required"
+rules[mobile] = "required"
+rules[message] = "required"
+rules_messages[fullname.required] = "请输入姓名"
+rules_messages[mobile.required] = "请输入电话"
+rules_messages[message.required] = "请输入信息"
+messages_success = "提交成功"
+messages_errors = "出错啦"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
 ==
 <!-- Section Features -->
 {% partial "content/features" %}
