@@ -9,3 +9,4 @@ require:
     - RainLab.Forum
     - RainLab.Blog
     - RainLab.User
+    - Martin.Forms
