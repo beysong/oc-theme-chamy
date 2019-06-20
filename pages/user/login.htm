@@ -3,8 +3,9 @@ url = "/account/login.htm"
 layout = "main"
 is_hidden = 0
 
-[Clake\UserExtended\Components\Account account]
+[RainLab\User\Components\Account account]
 paramCode = "code"
+forceSecure = 0
 ==
 <?php
 function onStart()
@@ -18,5 +19,5 @@ function onStart()
 ?>
 ==
 <section class="module-small">
-{% partial 'account::login' %}
+{% component 'account' %}
 </section>
