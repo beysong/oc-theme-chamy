@@ -1,0 +1,15 @@
+[viewBag]
+==
+<div class="widget">
+  <h5 class="widget-title font-alt">文章分类</h5>
+  {% if __SELF__.categories|length > 0 %}
+    <ul class="category-list">
+        {% partial __SELF__ ~ "::items"
+            categories = __SELF__.categories
+            currentCategorySlug = __SELF__.currentCategorySlug
+        %}
+    </ul>
+{% else %}
+    <p>还没有分类哦~</p>
+{% endif %}
+</div>

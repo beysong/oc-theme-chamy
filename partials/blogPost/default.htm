@@ -1,0 +1,67 @@
+[viewBag]
+==
+{% set post = __SELF__.post %}
+<div class="post">
+  <div class="post-thumbnail">
+  {% if post.featured_images.count %}
+    <div class="featured-images text-center">
+        {% for image in post.featured_images %}
+            <img
+                data-src="{{ image.filename }}"
+                src="{{ image.path }}"
+                alt="{{ image.description }}"
+                style="max-width: 100%" />
+        {% endfor %}
+        </div>
+    {% endif %}
+  </div>
+  <div class="post-header font-alt">
+    <h1 class="post-title">{{post.title}}</h1>
+    <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>| {{ post.published_at|date('M d, Y') }} | 3 Comments |  
+    {% if post.categories.count %} in
+        {% for category in post.categories %}
+            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+  <div class="post-entry">
+    {{ post.content_html|raw }}
+  </div>
+</div>
+<div class="comments">
+  <h4 class="comment-title font-alt">There are 3 comments</h4>
+  <div class="comment clearfix">
+    <div class="comment-avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/ryanbattles/128.jpg" alt="avatar"/></div>
+    <div class="comment-content clearfix">
+      <div class="comment-author font-alt"><a href="#">John Doe</a></div>
+      <div class="comment-body">
+        <p>The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The European languages are members of the same family. Their separate existence is a myth.</p>
+      </div>
+      <div class="comment-meta font-alt">Today, 14:55 - <a href="#">Reply</a>
+      </div>
+    </div>
+    <div class="comment clearfix">
+      <div class="comment-avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/draganbabic/128.jpg" alt="avatar"/></div>
+      <div class="comment-content clearfix">
+        <div class="comment-author font-alt"><a href="#">Mark Stone</a></div>
+        <div class="comment-body">
+          <p>Europe uses the same vocabulary. The European languages are members of the same family. Their separate existence is a myth.</p>
+        </div>
+        <div class="comment-meta font-alt">Today, 15:34 - <a href="#">Reply</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="comment clearfix">
+    <div class="comment-avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/pixeliris/128.jpg" alt="avatar"/></div>
+    <div class="comment-content clearfix">
+      <div class="comment-author font-alt"><a href="#">Andy</a></div>
+      <div class="comment-body">
+        <p>The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The European languages are members of the same family. Their separate existence is a myth.</p>
+      </div>
+      <div class="comment-meta font-alt">Today, 14:59 - <a href="#">Reply</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+[viewBag]
+==
+{% set posts = __SELF__.posts %}
+<section class="module">
+    <div class="container">
+        <div class="row post-masonry post-columns">
+        {% for post in posts %}
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="post">
+                    {% if post.featured_images[0] %}
+                    <div class="post-thumbnail">
+                        <a href="{{ post.url }}"><img src="{{post.featured_images[0].path}}" alt="{{ post.title }}"/></a>
+                    </div>
+                    {% endif %}
+                    <div class="post-header font-alt">
+                        <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                        <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| {{ post.published_at|date('M d, Y') }} | 3 Comments
+                        </div>
+                    </div>
+                    <div class="post-entry">
+                    <p>{{ post.summary|raw }}</p>
+                    </div>
+                    <div class="post-more"><a class="more-link" href="#">阅读更多</a></div>
+                </div>
+            </div>
+        {% else %}
+            <div class="no-data">{{ __SELF__.noPostsMessage }}</div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% if posts.lastPage > 1 %}
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
