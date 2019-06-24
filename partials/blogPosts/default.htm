@@ -1,6 +1,19 @@
 [viewBag]
 ==
 {% set posts = __SELF__.posts %}
+{% set random_img = 'assets/images/fullsize/0' ~ random(1,4) ~ '.jpg' %}
+
+
+<section class="module bg-dark-60 blog-page-header" data-background="{{random_img|theme}}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h2 class="module-title font-alt">{% if category %}{{category.name}}{% else %}文章列表{% endif %}</h2>
+        <div class="module-subtitle font-serif">{% if category %}{{category.description}}{% else %}所有文章都在这了...{% endif %}</div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="module">
     <div class="container">
         <div class="row post-masonry post-columns">
@@ -14,13 +27,18 @@
                     {% endif %}
                     <div class="post-header font-alt">
                         <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                        <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| {{ post.published_at|date('M d, Y') }} | 3 Comments
+                        <div class="post-meta">
+                        {% for category in post.categories %}
+                            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                         | 
+                         {{ post.published_at|date('M d, Y') }}
                         </div>
                     </div>
                     <div class="post-entry">
                     <p>{{ post.summary|raw }}</p>
                     </div>
-                    <div class="post-more"><a class="more-link" href="#">阅读更多</a></div>
+                    <div class="post-more"><a class="more-link" href="{{ post.url }}">阅读更多</a></div>
                 </div>
             </div>
         {% else %}
@@ -33,7 +51,9 @@
 {% if posts.lastPage > 1 %}
     <ul class="pagination">
         {% if posts.currentPage > 1 %}
-            <li><a href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+            <li>
+                <a href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a>
+            </li>
         {% endif %}
 
         {% for page in 1..posts.lastPage %}
@@ -43,7 +63,9 @@
         {% endfor %}
 
         {% if posts.lastPage > posts.currentPage %}
-            <li><a href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+            <li>
+                <a href="{{ this.page.baseFileName|page({ (__SELF__.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a>
+            </li>
         {% endif %}
     </ul>
 {% endif %}

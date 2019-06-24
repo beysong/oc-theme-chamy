@@ -1,6 +1,19 @@
 description = "Footer Widgets"
 
 [viewBag]
+
+[blogCategories footerCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "blog/blog"
+
+[blogPosts footerPopular]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/blog"
+postPage = "blog/detail"
 ==
 <div class="module-small bg-dark">
     <div class="container">
@@ -20,48 +33,19 @@ description = "Footer Widgets"
             </div>
             <div class="col-sm-3">
                 <div class="widget">
-                    <h5 class="widget-title font-alt">最新评论</h5>
+                    <h5 class="widget-title font-alt">友情链接</h5>
                     <ul class="icon-list">
-                        <li>Maria on <a href="#">Designer Desk Essentials</a></li>
-                        <li>John on <a href="#">Realistic Business Card Mockup</a></li>
-                        <li>Andy on <a href="#">Eco bag Mockup</a></li>
-                        <li>Jack on <a href="#">Bottle Mockup</a></li>
-                        <li>Mark on <a href="#">Our trip to the Alps</a></li>
+                        <li><a href="http://www.nineear.com/" target="_blank">九耳</a></li>
+                        <li><a href="https://www.themeshow.cn">THEMESHOW</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-3">
-                <div class="widget">
-                    <h5 class="widget-title font-alt">文章分类</h5>
-                    <ul class="icon-list">
-                        <li><a href="#">Photography - 7</a></li>
-                        <li><a href="#">Web Design - 3</a></li>
-                        <li><a href="#">Illustration - 12</a></li>
-                        <li><a href="#">Marketing - 1</a></li>
-                        <li><a href="#">Wordpress - 16</a></li>
-                    </ul>
-                </div>
+                {% component 'footerCategories' %}
             </div>
             <div class="col-sm-3">
-                <div class="widget">
-                    <h5 class="widget-title font-alt">最受欢迎</h5>
-                    <ul class="widget-posts">
-                        <li class="clearfix">
-                            <div class="widget-posts-image"><a href="#"><img src="{{ 'assets/images/content/06.jpg'|theme }}" alt="Post Thumbnail"/></a></div>
-                            <div class="widget-posts-body">
-                                <div class="widget-posts-title"><a href="#">Designer Desk Essentials</a></div>
-                                <div class="widget-posts-meta">23 january</div>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="widget-posts-image"><a href="#"><img src="{{ 'assets/images/content/05.jpg'|theme }}" alt="Post Thumbnail"/></a></div>
-                            <div class="widget-posts-body">
-                                <div class="widget-posts-title"><a href="#">Realistic Business Card Mockup</a></div>
-                                <div class="widget-posts-meta">15 February</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                {% component 'footerPopular' %}
+                
             </div>
         </div>
     </div>

@@ -1,0 +1,64 @@
+==
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Liath">
+    
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>{{ this.theme.site_name }}</title>
+    
+    {% styles %}
+    
+    <link href="{{ [
+        'assets/lib/bootstrap/dist/css/bootstrap.min.css',
+        'assets/lib/animate.css/animate.css',
+        'assets/lib/components-font-awesome/css/font-awesome.min.css',
+        'assets/lib/et-line-font/et-line-font.css',
+        'assets/lib/flexslider/flexslider.css',
+        'assets/lib/owl.carousel/dist/assets/owl.carousel.min.',
+        'assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css.',
+        'assets/lib/magnific-popup/dist/magnific-popup.css.',
+        'assets/lib/simple-text-rotator/simpletextrotator.css.',
+        'assets/css/style.css'
+    ]|theme }}" rel="stylesheet">
+    
+    <link id="color-scheme" href="{{ 'assets/css/colors/default.css'|theme }}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ 'assets/images/favicon.ico'|theme }}">
+
+    {% placeholder head %}
+
+</head>
+    <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+        <main>
+            <div class="page-loader">
+                <div class="loader">Loading...</div>
+            </div>
+            {% page %}
+        </main>
+
+        <script src="{{ [
+            'assets/lib/jquery/dist/jquery.js',
+            'assets/lib/bootstrap/dist/js/bootstrap.min.js',
+            'assets/lib/wow/dist/wow.js',
+            'assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js',
+            'assets/lib/isotope/dist/isotope.pkgd.js',
+            'assets/lib/imagesloaded/imagesloaded.pkgd.js',
+            'assets/lib/flexslider/jquery.flexslider.js',
+            'assets/lib/owl.carousel/dist/owl.carousel.min.js',
+            'assets/lib/magnific-popup/dist/jquery.magnific-popup.js',
+            'assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js',
+            'assets/js/plugins.js',
+            'assets/js/main.js'
+            ]|theme }}"></script>        
+        {% framework extras %}
+        {% scripts %} 
+
+    </body>
+</html>
+{% endspaceless %}
