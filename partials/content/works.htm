@@ -32,7 +32,7 @@ function onStart() {
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">Our Works</h2>
+                <h2 class="module-title font-alt">{{ this.theme.block_work_title|default('案例') }}</h2>
                 <div class="module-subtitle font-serif"></div>
             </div>
         </div>
@@ -41,7 +41,7 @@ function onStart() {
         <div class="row">
             <div class="col-sm-12">
                 <ul class="filter font-alt" id="filters">
-                    <li><a class="current wow fadeInUp" href="#" data-filter="*">All</a></li>
+                    <li><a class="current wow fadeInUp" href="#" data-filter="*">全部</a></li>
                     {{ this.page.sortable|raw }}
                 </ul>
             </div>
