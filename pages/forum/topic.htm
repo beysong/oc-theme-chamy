@@ -1,8 +1,11 @@
-title = "Forum"
+title = "论坛话题"
 url = "/forum/topic/:slug"
 layout = "main"
+is_hidden = 0
 
 [forumTopic]
+slug = "{{ :slug }}"
+postsPerPage = 20
 memberPage = "forum/member"
 channelPage = "forum/channel"
 ==
