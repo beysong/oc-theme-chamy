@@ -531,6 +531,12 @@ tabs:
       span: left
       label: Copyright
       type: text  
+
+    beian:
+      tab: Company details
+      span: left
+      label: 备案信息
+      type: text  
    
     # Social links
     social_facebook:

@@ -1,9 +1,14 @@
 console.log();
 (function(){
-    $(window).on('load', function() {
+    // $(window).on('load', function() {
+    //     $('.loader').fadeOut();
+    //     $('.page-loader').delay(350).fadeOut('slow');
+    // });
+    
+    setTimeout(() => {
         $('.loader').fadeOut();
         $('.page-loader').delay(350).fadeOut('slow');
-    });
+    }, 300);
 
     $(document).ready(function() {
 
